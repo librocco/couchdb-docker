@@ -96,7 +96,8 @@ COPY docker-entrypoint.sh /usr/local/bin
 RUN ln -s usr/local/bin/docker-entrypoint.sh /docker-entrypoint.sh # backwards compat
 ENTRYPOINT ["tini", "--", "/docker-entrypoint.sh"]
 
-VOLUME /opt/couchdb/data
+# Allow persisting db data in an image to support testing
+# VOLUME /opt/couchdb/data
 
 # 5984: Main CouchDB endpoint
 # 4369: Erlang portmap daemon (epmd)
